@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 import requests, os, json
 
 app = Flask(__name__)
@@ -8,7 +8,15 @@ TRANSLATE_URL = "https://translation.googleapis.com/language/translate/v2"
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    return send_from_directory(".", "index.html")
+
+@app.route("/main.js")
+def js():
+    return send_from_directory(".", "main.js")
+
+@app.route("/style.css")
+def css():
+    return send_from_directory(".", "style.css")
 
 @app.route("/translate", methods=["POST"])
 def translate():
