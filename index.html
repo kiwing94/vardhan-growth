@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+  <meta charset="UTF-8">
+  <title>وردھن ویب ایپ</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <h1>🌿 نظم نویس</h1>
+
+  <textarea id="poemInput" placeholder="اپنی نظم لکھیں..."></textarea><br>
+  <button onclick="suggestMetaphor()">استعارہ تجویز کریں</button>
+  <p id="metaphorBox">💡</p>
+  <button onclick="savePoem()">نظم محفوظ کریں</button>
+
+  <h2>🌍 ترجمہ کریں</h2>
+  <textarea id="translateInput" placeholder="متن درج کریں..."></textarea><br>
+  <label>زبان منتخب کریں:</label>
+  <select id="sourceLang">
+    <option value="">خودکار</option>
+    <option value="en">انگریزی</option>
+    <option value="ur">اردو</option>
+    <option value="hi">ہندی</option>
+    <option value="ar">عربی</option>
+  </select>
+  →
+  <select id="targetLang">
+    <option value="en">انگریزی</option>
+    <option value="ur">اردو</option>
+    <option value="hi">ہندی</option>
+    <option value="fr">فرانسیسی</option>
+    <option value="es">ہسپانوی</option>
+  </select>
+  <br><br>
+  <button onclick="translateText()">ترجمہ کریں</button>
+  <p id="translatedOutput">🌐 ترجمہ یہاں ظاہر ہوگا</p>
+
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
