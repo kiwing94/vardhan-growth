@@ -1,8 +1,8 @@
 function suggestMetaphor() {
   const ideas = [
-    "یادیں بارش کی بوندوں کی مانند ٹپکتی ہیں۔",
-    "دل ایک بند سمندر ہے۔",
-    "خیال ایک پرواز کرتا پرندہ ہے۔"
+    "Memories drip like falling rain.",
+    "The heart is a closed ocean.",
+    "A thought is a flying bird."
   ];
   document.getElementById('metaphorBox').innerText = ideas[Math.floor(Math.random() * ideas.length)];
 }
@@ -15,7 +15,7 @@ function savePoem() {
     body: JSON.stringify({username: 'user', text})
   })
   .then(res => res.json())
-  .then(data => alert("✅ نظم محفوظ ہو گئی!"));
+  .then(data => alert("✅ Poem saved!"));
 }
 
 function translateText() {
@@ -29,7 +29,11 @@ function translateText() {
   })
   .then(res => res.json())
   .then(data => {
-    const output = data.data.translations[0].translatedText;
-    document.getElementById('translatedOutput').innerText = output;
+    if (data.error) {
+      document.getElementById('translatedOutput').innerText = "❌ " + data.error;
+    } else {
+      const output = data.data.translations[0].translatedText;
+      document.getElementById('translatedOutput').innerText = output;
+    }
   });
 }
